@@ -2,9 +2,15 @@
   "settings": {},
   "rules": [
     {
-        "patterns": [".*/welcome$"],
+        "patterns": [".*/welcome"],
         "properties": {
             "view_controller" : "welcome"
+        }
+    },
+    {
+        "patterns": [".*/profile"],
+        "properties": {
+            "view_controller" : "profile"
         }
     },
     {

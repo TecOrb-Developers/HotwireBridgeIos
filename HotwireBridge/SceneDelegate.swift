@@ -1,7 +1,7 @@
 import HotwireNative
 import UIKit
 
-let rootURL = URL(string: "http://192.168.1.15:3000/welcome")!
+let rootURL = URL(string: "http://192.168.1.15:3000")!
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
@@ -47,11 +47,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate: NavigatorDelegate {
     func handle(proposal: VisitProposal, from navigator: Navigator) -> ProposalResult {
+        print("==================================================")
+               print("🔔 NAVIGATION DETECTED!")
+               print("📍 Full URL: \(proposal.url)")
+               print("📍 URL Path: \(proposal.url.path)")
+               print("📍 URL Last Component: \(proposal.url.lastPathComponent)")
+               print("📍 View Controller: \(proposal.viewController ?? "nil")")
+               print("📍 Context: \(proposal.context)")
+               print("📍 Presentation: \(proposal.presentation)")
         // Check for native screens
         switch proposal.viewController {
         case WelcomeViewController.pathConfigurationIdentifier:
             let welcomeVC = WelcomeViewController(url: proposal.url)
             return .acceptCustom(welcomeVC)
+        case ProfileViewController.pathConfigurationIdentifier:
+            let profileVC = ProfileViewController(url: proposal.url)
+            return .acceptCustom(profileVC)
         default:
             return .accept
         }

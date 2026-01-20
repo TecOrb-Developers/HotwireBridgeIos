@@ -10,7 +10,8 @@ import HotwireNative
 
 class WelcomeViewController: UIViewController, PathConfigurationIdentifiable {
     static var pathConfigurationIdentifier: String { "welcome" }
-
+    weak var navigator: Navigator?
+    
     private let url: URL
     
     init(url: URL) {
@@ -65,6 +66,7 @@ class WelcomeViewController: UIViewController, PathConfigurationIdentifiable {
     }
     
     @objc private func continueTapped() {
-            // Navigate to main app
+        let destinationURL = URL(string: "/profile", relativeTo: url)!
+            navigator?.route(destinationURL)
         }
 }
