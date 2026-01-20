@@ -2,6 +2,12 @@
   "settings": {},
   "rules": [
     {
+        "patterns": [".*/welcome$"],
+        "properties": {
+            "view_controller" : "welcome"
+        }
+    },
+    {
       "patterns": [
         ".*"
       ],
